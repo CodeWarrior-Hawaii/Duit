@@ -1,0 +1,49 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+    background-color: #333;
+    color: #BBB;
+}
+.table {
+    color: #BBB;
+}
+.welcomeCopy {
+    color: #BBB;
+}
+.todoCard {
+    background-color: #F90;
+    color: #222;
+    margin-bottom: 5px;
+    width: 24rem;
+}
+.todoDueDate {
+    float: right;
+    font-size: 12px;
+    color: #666;
+}
+.todoCompletedDate {
+    float: left;
+    font-size: 12px;
+    color: #666;
+}
+.strikethrough {
+    text-decoration: line-through;
+}
+.newTaskBtn {
+    background-color: #F90;
+    width: 24rem;
+}

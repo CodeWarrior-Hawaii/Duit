@@ -1,0 +1,40 @@
+﻿@using Duit.DAL.Entities;
+@model IEnumerable<ToDosTask>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<script src="js/TaskOperations.js" type="text/javascript"></script>
+
+<span class="display-1 welcomeCopy">Welcome to your Duit!</span>
+
+<div class="taskContainer">
+    @foreach (var todo in @Model)
+    {
+        var cardId = $"todoCard{todo.Id}";
+        var checkboxId = $"todoCheckbox{todo.Id}";
+        var descriptionId = $"taskDescription{todo.Id}";
+        <div class="card todoCard" id="@cardId" role="button" data-bs-toggle="collapse" href="#@descriptionId">
+            <div class="card-body">
+                <button type="button" class="btn float-end"><i class="bi bi-pencil-square"></i></button>
+                <div class="card-title h5">
+                    <input class="form-check-input todoCompleteChk @(todo.Completed ? "strikethrough" : "")" type="checkbox" id="@checkboxId" checked="@todo.Completed" aria-label="Complete">
+                    @todo.Title
+                </div>
+                @if (!string.IsNullOrEmpty(todo.Description))
+                {
+                    <p class="card-text collapse" id="@descriptionId">@todo.Description</p>
+                }
+                @if (todo.DueDateTime.HasValue)
+                {
+                    <div class="todoDueDate">@($"Due: {todo.DueDateTime:dd MMM HH:mm}")</div>
+                }
+                @if (todo.CompletedDateTime.HasValue)
+                {
+                    <div class="todoCompletedDate">@($"Done: {todo.CompletedDateTime:dd MMM HH:mm}")</div>
+                }
+            </div>
+        </div>
+    }
+</div>
+<div class="btn newTaskBtn h5">+NEW+</div>
